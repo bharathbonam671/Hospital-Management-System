@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Selection</title>
+    <style>
+        /* General styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: auto; /* Enable horizontal scrolling if needed */
+        }
+
+        .time-selection {
+          background-color: #e0f2f1; /* Change to desired color */
+          border-radius: 8px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+         max-width: 95%;
+        overflow: hidden;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        width: 100%;
+      }
+
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: center;
+            padding: 6px; /* Adjusted padding */
+            width: 12.5%; /* Adjusted width */
+            box-sizing: border-box; /* Include padding and border in the width calculation */
+            font-size: 14px; /* Adjusted font size */
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-size: 16px; /* Adjusted font size for headers */
+        }
+
+        .time-selection label {
+            display: block;
+            margin: 0; /* Remove margin to avoid extra spacing */
+            padding: 4px; /* Adjusted padding for better clickability */
+            font-size: 12px; /* Adjusted font size */
+        }
+
+        #submitBtn {
+            padding: 8px 16px; /* Adjusted padding */
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px; /* Adjusted border radius */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            margin-top: 15px; /* Added margin for button */
+            font-size: 14px; /* Adjusted font size */
+        }
+
+        #submitBtn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive adjustments */
+        @media only screen and (max-width: 600px) {
+            .time-selection {
+                max-width: 100%;
+            }
+            th, td {
+                width: 25%; /* Adjusted width for smaller screens */
+                font-size: 10px; /* Adjusted font size for smaller screens */
+            }
+            .time-selection label {
+                font-size: 10px; /* Adjusted font size for smaller screens */
+            }
+        }
+
+        body{
+            background: linear-gradient(300deg, #00bfff, #ff4c68, #ef8172);
+            background-size: 180% 180%;
+            animation: gradient-animation 18s ease infinite;
+         }
+
+    @keyframes gradient-animation {
+        0% {
+          background-position: 0% 50%;
+         }
+       50% {
+        background-position: 100% 50%;
+       }
+      100% {
+        background-position: 0% 50%;
+       }
+   }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="time-selection" required>
+            <form id="timeSelectionForm" action="/select-time" method="POST">
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="8">Select a Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><label><input type="radio" name="time" value="10:00:00" required>10:00</label></td>
+                            <td><label><input type="radio" name="time" value="10:10:00" required>10:10</label></td>
+                            <td><label><input type="radio" name="time" value="10:20:00" required>10:20</label></td>
+                            <td><label><input type="radio" name="time" value="10:30:00" required>10:30</label></td>
+                            <td><label><input type="radio" name="time" value="10:40:00" required>10:40</label></td>
+                            <td><label><input type="radio" name="time" value="10:50:00" required>10:50</label></td>
+                            <td><label><input type="radio" name="time" value="11:00:00" required>11:00</label></td>
+                            <td><label><input type="radio" name="time" value="11:10:00" required>11:10</label></td>
+                        </tr>
+                        <tr>
+                            <td><label><input type="radio" name="time" value="11:20:00" required>11:20</label></td>
+                            <td><label><input type="radio" name="time" value="11:30:00" required>11:30</label></td>
+                            <td><label><input type="radio" name="time" value="11:40:00" required>11:40</label></td>
+                            <td><label><input type="radio" name="time" value="11:50:00" required>11:50</label></td>
+                            <td><label><input type="radio" name="time" value="12:00:00" required>12:00</label></td>
+                            <td><label><input type="radio" name="time" value="12:10:00" required>12:10</label></td>
+                            <td><label><input type="radio" name="time" value="12:20:00" required>12:20</label></td>
+                            <td><label><input type="radio" name="time" value="12:30:00" required>12:30</label></td>
+                        </tr>
+                        <tr>
+                            <td><label><input type="radio" name="time" value="12:40:00" required>12:40</label></td>
+                            <td><label><input type="radio" name="time" value="12:50:00" required>12:50</label></td>
+                            <td><label><input type="radio" name="time" value="13:00:00" required>13:00</label></td>
+                            <td><label><input type="radio" name="time" value="13:10:00" required>13:10</label></td>
+                            <td><label><input type="radio" name="time" value="13:20:00" required>13:20</label></td>
+                            <td><label><input type="radio" name="time" value="13:30:00" required>13:30</label></td>
+                            <td><label><input type="radio" name="time" value="13:40:00" required>13:40</label></td>
+                            <td><label><input type="radio" name="time" value="13:50:00" required>13:50</label></td>
+                        </tr>
+                        <tr>
+                            <td><label><input type="radio" name="time" value="14:00:00" required>14:00</label></td>
+                            <td><label><input type="radio" name="time" value="14:10:00" required>14:10</label></td>
+                            <td><label><input type="radio" name="time" value="14:20:00" required>14:20</label></td>
+                            <td><label><input type="radio" name="time" value="14:30:00" required>14:30</label></td>
+                            <td><label><input type="radio" name="time" value="14:40:00" required>14:40</label></td>
+                            <td><label><input type="radio" name="time" value="14:50:00" required>14:50</label></td>
+                            <td><label><input type="radio" name="time" value="15:00:00" required>15:00</label></td>
+                            <td><label><input type="radio" name="time" value="15:10:00" required>15:10</label></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button id="submitBtn" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    <script>
+         const selectedTimes = JSON.parse('<%- JSON.stringify(selectedTimes) %>');
+    
+        
+        selectedTimes.forEach(time => {
+            const radioBtn = document.querySelector(`input[type="radio"][value="${time}"]`);
+            if (radioBtn) {
+                radioBtn.disabled = true;
+                radioBtn.parentElement.style.color = 'lightgray';
+            }
+        });
+    </script>
+</body>
+</html>

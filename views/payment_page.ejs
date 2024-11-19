@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <style>
+       body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+ 
+/* Add this CSS to adjust the color scheme */
+
+.container {
+    max-width: 400px;
+    width: 80%;
+    background-color: #ffffff; /* Change the background color of the container */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    color: #333; /* Change the color of the heading */
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+p {
+    font-size: 18px;
+    color: #555; /* Change the color of the paragraph text */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+label {
+    display: block;
+    font-size: 18px;
+    color: #333; /* Change the color of the label text */
+    margin-bottom: 10px;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 18px;
+    color: #333; /* Change the color of the input text */
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333; /* Change the background color of the button */
+    color: #fff; /* Change the color of the button text */
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #000; /* Change the background color of the button on hover */
+}
+
+
+
+body {
+    background: linear-gradient(45deg, #f9d423, #ff4e50, #f9d423);
+    background-size: 200% 200%;
+    animation: gradient-animation 18s ease infinite;
+}
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+  
+    </style>
+</head>
+<body>
+    <div class="container">
+        <% if (locals.message1) { %>
+            <p style="font-size:25px">No dues left.</p>
+        <% } else { %>
+            <h1>Payment Page</h1>
+            <p>Amount to be paid: <%= locals.message2 %></p>
+            <form action="/make-payment" method="POST">
+                <input type="hidden" id="patId" name="patId" value="<%= pat_id %>">
+                <label for="paymentAmount">Enter payment amount:</label>
+                <input type="number" id="paymentAmount" name="paymentAmount" required min="0" max="<%= locals.message2 %>">
+                <button type="submit">Pay Now</button>
+            </form>
+        <% } %>
+    </div>
+</body>
+</html>

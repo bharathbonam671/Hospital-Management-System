@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Doctor Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Set font family */
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa; /* Set background color */
+        }
+
+        h1 {
+            text-align: center; /* Center align heading */
+            margin-top: 20px; /* Add space above heading */
+        }
+
+        ul {
+            list-style-type: none; /* Remove bullet points */
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff; /* Set background color for list items */
+            margin: 10px;
+            padding: 15px;
+            border-radius: 5px; /* Add border radius */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow */
+            transition: transform 0.3s ease; /* Add transition effect */
+        }
+
+        li:hover {
+            transform: translateY(-5px); /* Move list item up on hover */
+        }
+
+        a {
+            text-decoration: none; /* Remove underline */
+            color: #333; /* Set link color */
+            font-weight: bold; /* Make link text bold */
+        }
+
+        a:hover {
+            color: #007bff; /* Change link color on hover */
+        }
+
+        .search-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 300px;
+            box-sizing: border-box;
+        }
+
+        .logout-btn {
+            position: absolute;
+            top: 10px; /* Adjust as needed */
+            right: 10px; /* Adjust as needed */
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: black; /* Update the background color to black */
+            color: #ffffff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            max-width: 200px;
+        }
+
+        .logout-btn:hover {
+            background-color: #333333; /* Update the hover background color */
+        }
+    </style>
+</head>
+<body>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+
+    <h1>View Doctor Information</h1>
+    
+    <!-- Search Bar -->
+    <div class="search-container">
+        <input type="text" id="searchInput" onkeyup="filterDoctors()" placeholder="Search for doctors...">
+    </div>
+
+    <ul id="doctorList">
+        <% doctors.forEach(doctor => { %>
+            <li>
+                <a href="/view-doctor-info/<%= doctor.id %>">
+                    <%= doctor.name %> - <%= doctor.speciality %>
+                </a>
+            </li>
+        <% }); %>
+    </ul>
+
+    <script>
+        function filterDoctors() {
+            var input, filter, ul, li, a, i, txtValue;
+            input = document.getElementById('searchInput');
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("doctorList");
+            li = ul.getElementsByTagName('li');
+            for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        }
+        
+      function logout() {
+            // Redirect back to main page
+            window.location.href = "/";
+        }
+  
+    </script>
+</body>
+</html>

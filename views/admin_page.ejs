@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .admin-form {
+         background-color: rgba(255, 255, 255, 0.9); /* Change the opacity to make it semi-transparent */
+         border-radius: 10px;
+         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+         padding: 20px;
+         width: 80%;
+         max-width: 400px;
+         text-align: center;
+      }
+
+
+        h1 {
+            margin-top: 0;
+            color: #333333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #333333;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #555555;
+            background-color: #ffffff;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #ffffff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .logout-btn {
+            position: absolute;
+            top: 10px; /* Adjust as needed */
+            right: 10px; /* Adjust as needed */
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: black; /* Update the background color to black */
+            color: #ffffff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            max-width: 150px;
+        }
+
+        .logout-btn:hover {
+            background-color: #333333; /* Update the hover background color */
+        }
+
+        body{
+            background: linear-gradient(300deg, #00bfff, #ff4c68, #ef8172);
+            background-size: 180% 180%;
+            animation: gradient-animation 18s ease infinite;
+         }
+
+         @keyframes gradient-animation {
+        0% {
+          background-position: 0% 50%;
+         }
+       50% {
+        background-position: 100% 50%;
+       }
+      100% {
+        background-position: 0% 50%;
+       }
+     }
+
+    </style>
+</head>
+<body>
+    <div class="admin-form">
+        <h1>Admin Panel</h1>
+        <form action="/admin-action" method="POST">
+            <select id="action" name="action" required>
+                <option value="" disabled selected>Select Option</option>
+                <option value="addDoctor">Add New Doctor</option>
+                <option value="addPatient">Add Patient</option>
+                <option value="billPayment">Bill Payment</option>
+                <option value="deleteDoctor">Delete Doctor</option>
+                <option value="dischargeAdmittedPatients">Discharge Admitted Patients</option>
+                <option value="editDoctor">Edit Doctor Information</option>
+                <option value="updateBill">Update Patient Bill</option>
+                <option value="viewDocotorInfo">View Doctor Information</option>
+                <option value="viewPatientInfo">View Patient Information</option>
+                <!-- Add more options as needed -->
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
+    <script>
+        // Function to handle logout
+        function logout() {
+            // Redirect back to main page
+            window.location.href = "/";
+        }
+    </script>
+</body>
+</html>

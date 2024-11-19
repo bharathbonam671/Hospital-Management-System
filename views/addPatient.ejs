@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Patient</title>
+    <style>
+        /* Your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #e0e0e0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"].add-patient-btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        input[type="submit"].add-patient-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .logout-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: black;
+            color: #ffffff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            max-width: 200px;
+        }
+
+        .logout-btn:hover {
+            background-color: #333333;
+        }
+
+        body{
+            background: linear-gradient(300deg, #00bfff, #ff4c68, #ef8172);
+            background-size: 180% 180%;
+            animation: gradient-animation 18s ease infinite;
+         }
+
+         @keyframes gradient-animation {
+        0% {
+          background-position: 0% 50%;
+         }
+       50% {
+        background-position: 100% 50%;
+       }
+      100% {
+        background-position: 0% 50%;
+       }
+     }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <button class="logout-btn" onclick="logout()">Logout</button>
+    <h2>Add Patient</h2>
+    <form action="/add_patient" method="post" onsubmit="return validateForm()">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" required>
+        </div>
+        <div class="form-group">
+            <label for="gender">Gender</label>
+            <select id="gender" name="gender" required>
+                <option value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="text" id="phone" name="phone" required>
+        </div>
+        <div class="form-group">
+            <label for="join_date">Joining Date (YYYY-MM-DD)</label>
+            <input type="text" id="join_date" name="join_date" placeholder="YYYY-MM-DD" pattern="\d{4}-\d{2}-\d{2}" required>
+        </div>
+        <div class="form-group">
+            <label for="join_time">Joining Time</label>
+            <input type="time" id="join_time" name="join_time" required>
+        </div>
+        <input type="submit" value="Add Patient" class="add-patient-btn">
+    </form>
+</div>
+
+<script>
+    function logout() {
+        // Redirect back to main page
+        window.location.href = "/";
+    }
+
+    function validateForm() {
+        var currentDate = new Date().toISOString().slice(0, 10);
+        var inputDate = document.getElementById('join_date').value;
+
+        if (inputDate !== currentDate) {
+            alert('Joining date must be the current date.');
+            return false;
+        }
+
+        return true;
+    }
+</script>
+
+</body>
+</html>

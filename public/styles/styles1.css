@@ -1,0 +1,135 @@
+/* styles1.css */
+
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: montserrat;
+  position: relative; /* Ensure overlay covers the entire page */
+}
+
+nav {
+background: #0082e6;
+height: 80px;
+width: 100%;
+position: relative; /* Fix navbar position */
+top: 0; /* Position navbar at the top */
+z-index: 2; /* Ensure nav is above overlay */
+}
+
+label.logo {
+  color: white;
+  font-size: 35px;
+  line-height: 80px;
+  padding: 0 100px;
+  font-weight: bold;
+}
+
+nav ul {
+  float: right;
+  margin-right: 20px;
+}
+
+nav ul li {
+  display: inline-block;
+  line-height: 80px;
+  margin: 0 5px;
+}
+
+nav ul li a {
+  color: white;
+  font-size: 17px;
+  padding: 7px 13px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+a.active,
+a:hover {
+  background: #1b9bff;
+  transition: .5s;
+}
+
+.checkbtn {
+  font-size: 30px;
+  color: white;
+  float: right;
+  line-height: 80px;
+  margin-right: 40px;
+  cursor: pointer;
+  display: none;
+}
+
+#check {
+  display: none;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity as needed */
+  z-index: 1; /* Ensure overlay is below nav */
+  display: none; /* Initially hidden */
+}
+
+/* Show overlay when navbar is open */
+#check:checked ~ .overlay {
+  display: block;
+}
+
+.overlay .checkbtn {
+  display: block;
+  color: white;
+  font-size: 30px;
+  float: right;
+  line-height: 80px;
+  margin-right: 40px;
+  cursor: pointer;
+}
+
+@media (max-width: 858px) {
+  .checkbtn {
+      display: block;
+  }
+
+  ul {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background:darkcyan;
+      top: 0; /* Adjust top position */
+      left: -100%;
+      text-align: center;
+      transition: all .5s;
+  }
+
+  nav ul li {
+      display: block;
+      margin: 50px 0;
+      line-height: 30px;
+  }
+
+  nav ul li a {
+      font-size: 20px;
+  }
+
+  a:hover,
+  a.active {
+      background: none;
+      color:chocolate;
+  }
+
+  #check:checked ~ ul {
+      left: 0;
+  }
+  
+}
+
